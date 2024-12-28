@@ -1,0 +1,109 @@
+<!-- PromptGenerator.html ### -->
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KI-Tools Prompt-Generator</title>
+  <link rel="icon" type="image/png" href="Logos/Favicon.png" />
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+
+<body>
+  <div class="title-bar">
+    <div class="hamburger-menu">
+      <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav class="mobile-nav">
+      <a class="mobile-nav-link" href="index.html">Start</a>
+      <a class="mobile-nav-link" href="PromptGenerator.html">Prompt-Generator</a>
+      <a class="mobile-nav-link" href="PromptDifferentialDiagnosis.html">Differentialdiagnosen</a>
+      <a class="mobile-nav-link" href="PromptReport.html">Befundüberarbeitung</a>
+      <a class="mobile-nav-link" href="PromptQuestion.html">Frage mit radiologischem Kontext</a>
+      <a class="mobile-nav-link" href="FAQ.html">FAQ</a>
+    </nav>
+    <img alt="KI Tools" class="title-bar-image" src="Logos/KI-Tools.png" />
+    <div class="title-button-row" id="title-bar-row">
+      <a class="title-bar-link" href="index.html"> Start </a>
+      <a class="title-bar-link dropbtn" href="#"> Funktionen </a>
+      <div class="dropdown-content">
+        <a href="PromptGenerator.html">Prompt-Generator</a>
+        <a href="PromptDifferentialDiagnosis.html">Differentialdiagnosen</a>
+        <a href="PromptReport.html">Befundüberarbeitung</a>
+        <a href="PromptQuestion.html">Frage mit radiologischem Kontext</a>
+      </div>
+      <a class="title-bar-link" href="FAQ.html">FAQ</a>
+    </div>
+  </div>
+  <div class="container">
+    <img alt="KI Prompts" id="dynamicHeader" src="Logos/KI Prompts.png" />
+    <div class="instructions" id="initialInstructions">
+      <ul>
+        <li>Gewünschtes Thema oder Frage in Feld eintragen</li>
+        <li>Dokumententyp im Drop-Down-Menü auswählen</li>
+        <li>Modalität im Drop-Down-Menü auswählen</li>
+        <li>Bestätigen mit KI-Anweisung erzeugen</li>
+      </ul>
+    </div>
+    <input class="input-field" id="topicInput" placeholder="Thema/Erkrankung/Tumor eingeben" type="text" />
+    <select class="input-field" id="documentType" placeholder="Dokument-Typ wählen">
+      <option disabled="" hidden="" selected="" value="">Dokument-Typ wählen</option>
+      <option value="Option 6">Übersicht</option>
+      <option value="Option 1">Protokoll- und Befundungshilfe</option>
+      <option value="Option 7">Staging-Hilfe</option>
+    </select>
+    <select class="input-field" id="modalityInput" placeholder="Modalität wählen">
+      <option selected="" value="">Modalität wählen</option>
+      <option value="MRT">MRT</option>
+      <option value="CT">CT</option>
+      <option value="MRT und CT">MRT und CT</option>
+      <option value="Bildgebende Verfahren ohne MRT und CT">Sonstiges</option>
+    </select>
+    <div class="button-row">
+      <button class="button button-match-instruction" id="generateButton" onclick="generateInstruction()">KI-Anweisung erzeugen</button>
+      <button class="button hidden" id="chatGPTButton" onclick="openChatGPT()">
+        <img src="Logos/ChatGPT.png" alt="ChatGPT Logo">
+        <span>ChatGPT</span>
+      </button>
+      <button class="button hidden" id="microsoftCopilotButton" onclick="openMicrosoftCopilot()">
+        <img src="Logos/Copilot.png" alt="Microsoft Copilot Logo">
+        <span>Microsoft Copilot</span>
+      </button>
+      <button class="button hidden" id="bardButton" onclick="openBard()">
+        <img src="Logos/Gemini.png" alt="Google Gemini Logo">
+        <span>Google Gemini</span>
+      </button>
+      <button class="button hidden" id="claudeButton" onclick="openClaude()">
+        <img src="Logos/Anthropic.png" alt="Anthropic Logo">
+        <span>Anthropic Claude</span>
+      </button>
+    </div>
+    <div class="instructions hidden" id="instructions">
+      <h3>Anleitung:</h3>
+      <ul>
+        <li>Wähle zwischen <strong>"ChatGPT", "Microsft Copilot", "Google Gemini" oder "Anthropic Claude"</strong></li>
+        <li><strong>Login</strong> mit <strong>Microsoft-Account oder Google Account</strong></li>
+        <li>Chatmodus <strong>"kreativ"</strong> auswählen</li>
+        <li>Generierte <strong>KI-Anweisung einfügen (bereits in die Zwischenablage kopiert)</strong> und <strong>bestätigen.</strong></li>
+      </ul>
+    </div>
+    <div class="final-text hidden" id="finalText"></div>
+  </div>
+  <footer class="gradient-footer">
+    <div class="footer-text">
+      <span>© - ML - 2024</span>
+      <span class="footer-link">Auch erreichbar aus dem Internet: <a href="https://radaitools.pages.dev" class="external-link">radaitools.pages.dev</a></span>
+    </div>
+  </footer>
+  <script src="script_PromptGenerator.js"></script>
+  <script src="script_General.js"></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "e94df41afe2e4345b21e9a47b25c129c"}'></script>
+</body>
+
+</html>

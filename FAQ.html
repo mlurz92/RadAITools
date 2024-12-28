@@ -1,0 +1,615 @@
+<!-- FAQ.html ### -->
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KI-Tools FAQ</title>
+  <link rel="icon" type="image/png" href="Logos/Favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+    <div class="title-bar">
+        <div class="hamburger-menu">
+          <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <nav class="mobile-nav">
+          <a class="mobile-nav-link" href="index.html">Start</a>
+          <a class="mobile-nav-link" href="PromptGenerator.html">Prompt-Generator</a>
+          <a class="mobile-nav-link" href="PromptDifferentialDiagnosis.html">Differentialdiagnosen</a>
+          <a class="mobile-nav-link" href="PromptReport.html">Befundüberarbeitung</a>
+          <a class="mobile-nav-link" href="PromptQuestion.html">Frage mit radiologischem Kontext</a>
+          <a class="mobile-nav-link" href="PromptSplitter.html">Prompt-Splitter</a>
+          <a class="mobile-nav-link" href="FAQ.html">FAQ</a>
+        </nav>
+        <img alt="KI Tools" class="title-bar-image" src="Logos/KI-Tools.png" />
+        <div class="title-button-row" id="title-bar-row">
+          <a class="title-bar-link" href="index.html"> Start </a>
+          <a class="title-bar-link dropbtn" href="#"> Funktionen </a>
+          <div class="dropdown-content">
+            <a href="PromptGenerator.html">Prompt-Generator</a>
+            <a href="PromptDifferentialDiagnosis.html">Differentialdiagnosen</a>
+            <a href="PromptReport.html">Befundüberarbeitung</a>
+            <a href="PromptQuestion.html">Frage mit radiologischem Kontext</a>
+            <a href="PromptSplitter.html">Prompt-Splitter</a>
+          </div>
+          <a class="title-bar-link" href="FAQ.html">FAQ</a>
+        </div>
+      </div>
+<div class="container">
+        <h1>Häufig gestellte Fragen (FAQ)</h1>
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <!-- Allgemeine Fragen -->
+            <h2>Allgemeine Fragen</h2>
+            <div class="faq-item">
+                <button class="faq-question">Was ist RadAI Tools?</button>
+                <div class="faq-answer">
+                    <p style="line-height: 1.5;"><b>RadAI Tools</b> ist eine Sammlung von Tools, die speziell entwickelt wurden, um Radiologen dabei zu
+                        helfen, ihre <b>Interaktion</b> mit textbasierten <b>generativen KI-Systemen</b> zu <b>verbessern</b> und zu
+                        <b>vereinfachen</b>. Es bietet <b>Tools</b> wie den Prompt-Generator, Prompt-Splitter und Prompt-Templates,
+                        die auf die <b>Bedürfnisse von Radiologieexperten zugeschnitten</b> sind.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Für wen sind die RadAI Tools gedacht?</button>
+                <div class="faq-answer">
+                    <p style="line-height: 1.5;">RadAI Tools wurde speziell für <b>Radiologen und Fachkräfte im medizinischen Bereich</b> entwickelt, die
+                        die Effizienz ihrer Arbeit durch den Einsatz von KI-gestützten Systemen erhöhen möchten.</p>
+                </div>
+            </div>
+            <div class="faq-section">
+                <!-- Prompt-Generator -->
+                <h2>Prompt-Generator</h2>
+                <div class="faq-item">
+                    <button class="faq-question">Was ist der Zweck des Prompt-Generators?</button>
+                    <div class="faq-answer">
+                        <p style="line-height: 1.5;">Der Prompt-Generator ist darauf ausgelegt, Nutzern zu ermöglichen, <b>schnell und effizient
+                            maßgeschneiderte Prompts zu erstellen</b>. Diese Prompts sind <b>speziell auf radiologische
+                            Anfragen abgestimmt</b> und helfen dabei, präzise und kontextrelevante Anfragen an KI-basierte
+                            Systeme zu formulieren.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Welche Eingabeparameter benötigt der Prompt-Generator und was bewirken
+                        sie?</button>
+                    <div class="faq-answer">
+                        <p style="line-height: 1.5;">Der Prompt-Generator benötigt als Eingabeparameter das <b>Thema oder die Frage</b> sowie die
+                            <b>Untersuchungsmodalität</b> und den <b>Eingabetyp</b>. Das Thema bzw. die Frage definiert den Kontext der
+                            Anfrage, während die Untersuchungsmodalität und der Eingabetyp dabei helfen, die Anfrage
+                            weiter zu spezifizieren und einen präzisen Prompt für die KI zu erstellen.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Wie nutze ich den Prompt-Generator Schritt für Schritt?</button>
+                    <div class="faq-answer">
+                        <p style="line-height: 1.5;">Zur Erstellung eines optimierten und speziell auf Ihre Bedürfnisse zugeschnittenen Prompts gehen Sie folgendermaßen vor:</p>
+                        <ul>
+                            <li>
+                                Geben Sie Ihr Thema oder Ihre Frage in das Eingabefeld "Thema/Beschreibung/Befund/Frage
+                                eingeben" ein.
+                            </li><br>
+                            <li>
+                                Wählen Sie den gewünschten Dokumenttyp und die Untersuchungsmodalität aus den Dropdown-Menüs
+                                aus.
+                            </li><br>
+                            <li>
+                                Klicken Sie auf "KI-Anweisung erzeugen". Der generierte Prompt wird automatisch in die
+                                Zwischenablage kopiert.                            
+                            </li><br>
+                            <li>
+                                Wählen Sie das gewünschte KI-Tool aus den angezeigten Buttons aus (z.B. "Microsoft
+                                Copilot"). Sie werden direkt zur entsprechenden Website weitergeleitet.
+                            </li><br>
+                            <li>
+                                Fügen Sie den Prompt aus der Zwischenablage in das KI-Tool ein und starten Sie die Interaktion.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Welche Informationen liefern die verschiedenen Dokumenttypen im
+                        Prompt-Generator?</button>
+                    <div class="faq-answer">
+                        <p style="line-height: 1.5;">Der Prompt-Generator bietet verschiedene Dokumenttypen, die auf spezifische radiologische
+                            Anforderungen zugeschnitten sind:</p>
+                        <ul>
+                            <li>
+                                <b>Protokoll- und Befundungshilfe</b>: Strukturiert Untersuchungsprotokolle und
+                                Befundungen, inklusive Empfehlungen zu Sequenzen und Kontrastmittelphasen, um
+                                Untersuchungen präzise vorzubereiten.
+                            </li><br>
+                            <li>
+                                <b>Differenzialdiagnosen</b>: Bietet eine Liste mit Differenzialdiagnosen, inklusive
+                                Erklärungen und bildgebenden Merkmalen, um diagnostische Entscheidungen zu unterstützen.
+                            </li><br>
+                            <li>
+                                <b>Übersicht</b>: Präsentiert eine umfassende Übersicht über radiologische Themen,
+                                inklusive Definitionen, Einteilungen und radiologischer Zeichen für tiefere Einblicke.
+                            </li><br>
+                            <li>
+                                <b>Befundüberarbeitung</b>: Optimiert radiologische Befunde durch Überarbeitung von
+                                Stil, Wortwahl und Grammatik, für eine klarere und präzisere Befunddarstellung.
+                            </li><br>
+                            <li>
+                                <b>Frage mit Radiologischem Kontext</b>: Liefert fundierte Antworten auf komplexe
+                                Fragen, basierend auf gründlicher Recherche und tiefem Verständnis radiologischer
+                                Themen.
+                            </li><br>
+                            <li>
+                                <b>Übersicht Plus</b>: Bietet eine erweiterte Übersicht mit zusätzlichen Informationen
+                                und Tipps für eine noch tiefere Analyse und Bewertung radiologischer Themen.
+                            </li><br>
+                            <li>
+                                <b>Tumor-Staging</b>: Bereitet präzise Informationen zum Tumor-Staging auf, inklusive
+                                TNM-Kriterien und praktischen Tipps für die radiologische Beurteilung.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Was beinhalten die verschiedenen Dokumenttypen im
+                        Prompt-Generator?</button>
+                    <div class="faq-answer">
+                        <p style="line-height: 1.5;">Die Dokumente des Prompt-Generators liefern umfassende und auf die Fragestellung angepasste
+                            Informationen zum eingegebenen Thema:</p>
+                        <ul>
+                            <br>
+                            <li>
+                                <b>Protokoll- und Befundungshilfe:</b>
+                                <br>
+                                <br>
+                                <ul>
+                                    <li>
+                                        <i>
+                                            <b>Optimale Form der Eingabe:</b>
+                                        </i>
+                                        <br>
+                                        Klare, themenbezogene Angaben; Angabe der Untersuchungsmodalität.
+                                    </li>
+                                    <li>
+                                        <i>
+                                            <b>Zu erwartende Inhalte:</b>
+                                        </i>
+                                        <br>
+                                        Strukturierte Protokolle und Anleitungen zur Befundung.<br>
+                                        Empfehlungen für Sequenzen und Kontrastmittelphasen.
+                                    </li>
+                                    <li>
+                                        <i>
+                                            <b>Ziel der Optimierung:</b>
+                                        </i>
+                                        <br>
+                                        Unterstützung bei der Erstellung präziser und umfassender
+                                        Untersuchungsprotokolle.
+                                    </li>
+                                </ul>
+                            </li>
+                            <br>
+                            <br>
+                            <li>
+                                <b>Differenzialdiagnosen:</b>
+                                <br>
+                                <br>
+                                <ul>
+                                    <li>
+                                        <i>
+                                            <b>Optimale Form der Eingabe:</b>
+                                        </i>
+                                        <br>
+                                        Spezifische Angaben zum medizinischen Fall oder Symptom.
+                                    </li>
+                                    <li>
+                                        <i>
+                                            <b>Zu erwartende Inhalte:</b>
+                                        </i>
+                                        <br>
+                                        Liste von Differenzialdiagnosen.<br>
+                                        Detaillierte bildgebende Merkmale jeder Diagnose.
+                                    </li>
+                                    <li>
+                                        <i>
+                                            <b>Ziel der Optimierung:</b>
+                                        </i>
+                                        <br>
+                                        Bereitstellung einer fundierten Grundlage für die diagnostische
+                                        Entscheidungsfindung.
+                                    </li>
+                                </ul>
+                            </li>
+                            <br>
+                            <br>
+                            <li>
+                                <b>Übersicht und Übersicht Plus:</b>
+                                <br>
+                                <br>
+                                <ul>
+                                    <li>
+                                        <i>
+                                            <b>Optimale Form der Eingabe:</b>
+                                        </i>
+                                        <br>
+                                        Themenspezifische Keywords.
+                                    </li>
+                                    <li>
+                                        <i>
+                                            <b>Zu erwartende Inhalte:</b>
+                                        </i>
+                                        <br>
+                                        Umfassende Informationen zu radiologischen Themen.<br>
+                                        Zusätzliche Tipps und vertiefte Informationen im Übersicht Plus.
+                                    </li>
+                                    <li>
+                                        <i>
+                                            <b>Ziel der Optimierung:</b>
+                                        </i>
+                                        <br>
+                                        Erleichterung des Zugangs zu breiten, themenrelevanten Informationen.
+                                    </li>
+                                </ul>
+                            </li>
+                            <br>
+                            <br>
+                            <li>
+                                <b>Befundüberarbeitung:</b>
+                                <br>
+                                <br>
+                                <ul>
+                                    <li>
+                                        <i>
+                                            <b>Optimale Form der Eingabe:</b>
+                                        </i>
+                                        <br>
+                                        Vorläufiger Befundtext.
+                                    </li>
+                                    <li>
+                                        <i>
+                                            <b>Zu erwartende Inhalte:</b>
+                                        </i>
+                                        <br>
+                                        Optimierung von Stil, Wortwahl und Grammatik.<br>
+                                        Mehrere Vorschläge für eine optimierte Formulierung.<br>
+                                        Schlussfolgernde Beurteilung.
+                                    </li>
+                                    <li>
+                                        <i>
+                                            <b>Ziel der Optimierung:</b>
+                                        </i>
+                                        <br>
+                                        Verbesserung der Klarheit, Präzision und Professionalität des Befundtextes.
+                                    </li>
+                                </ul>
+                            </li>
+                            <br>
+                            <br>
+                            <li>
+                                <b>Frage mit Radiologischem Kontext:</b>
+                                <br>
+                                <br>
+                                <ul>
+                                    <li>
+                                        <i>
+                                            <b>Optimale Form der Eingabe:</b>
+                                        </i>
+                                        <br>
+                                        Detaillierte, kontextbezogene Frage.
+                                    </li>
+                                    <li>
+                                        <i>
+                                            <b>Zu erwartende Inhalte:</b>
+                                        </i>
+                                        <br>
+                                        Fundierte, tiefgehende und präzise Informationen.
+                                    </li>
+                                    <li>
+                                        <i>
+                                            <b>Ziel der Optimierung:</b>
+                                        </i>
+                                        <br>
+                                        Bereitstellung umfassender, gut recherchierter Antworten auf komplexe Fragen.
+                                    </li>
+                                </ul>
+                            </li>
+                            <br>
+                            <br>
+                            <li>
+                                <b>Tumor-Staging:</b>
+                                <br>
+                                <br>
+                                <ul>
+                                    <li>
+                                        <i>
+                                            <b>Optimale Form der Eingabe:</b>
+                                        </i>
+                                        <br>
+                                        Spezifische Angaben zum Tumortyp und Stadium.
+                                    </li>
+                                    <li>
+                                        <i>
+                                            <b>Zu erwartende Inhalte:</b>
+                                        </i>
+                                        <br>
+                                        Detaillierte Informationen zum Tumor-Staging.<br>
+                                        TNM-Klassifikation.<br>
+                                        Bevorzugte Metastasierungswege.<br>
+                                        Tipps für die Befundung.
+                                    </li>
+                                    <li>
+                                        <i>
+                                            <b>Ziel der Optimierung:</b>
+                                        </i>
+                                        <br>
+                                        Bereitstellung präziser Informationen für die radiologische Beurteilung und
+                                        Planung.
+                                    </li>
+                                </ul>
+                            </li>
+                            <br>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-section">
+                    <!-- ... Previous FAQ items for Allgemeine Fragen and Prompt-Generator ... -->
+                    <div class="faq-section">
+                        <h2>Differentialdiagnosen</h2>
+                        <div class="faq-item">
+                            <button class="faq-question">Was ist der Zweck des Tools für Differentialdiagnosen?</button>
+                            <div class="faq-answer">
+                                <p style="line-height: 1.5;">Das Tool unterstützt Radiologen bei der Erstellung einer Liste möglicher Differentialdiagnosen basierend auf spezifischen Patientendaten und Läsionsbeschreibungen, um die Diagnosefindung zu erleichtern.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Welche spezifischen Eingaben benötigt das Tool für Differentialdiagnosen?</button>
+                            <div class="faq-answer">
+                                <p style="line-height: 1.5;">
+                                    Um präzise Differentialdiagnosen generieren zu können, sind detaillierte Informationen in den folgenden Eingabefeldern erforderlich. Die Tabelle bietet eine Übersicht über jedes Feld und die Art der benötigten Eingaben:
+                                </p>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Eingabefeld</th>
+                                            <th>Benötigte Eingaben</th>
+                                            <th>Beispiele</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><b>Modalität</b></td>
+                                            <td>Die bildgebende Modalität, mit der die Untersuchung durchgeführt wurde</td>
+                                            <td>MRT, CT</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Geschlecht</b></td>
+                                            <td>Geschlecht des Patienten</td>
+                                            <td>Männlich, Weiblich</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Alter</b></td>
+                                            <td>Alter des Patienten in Jahren</td>
+                                            <td>45 Jahre</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Untersuchungsregion</b></td>
+                                            <td>Die Körperregion, in der die Läsion identifiziert wurde</td>
+                                            <td>Leber, Lunge</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Läsionsdetails</b></td>
+                                            <td>Spezifische Merkmale der Läsion inklusive Größe, Form und weiterer bildgebender Charakteristika</td>
+                                            <td>Rundherd in der Lunge, 2 cm, spikulierte Ränder</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Sonstige Informationen</b></td>
+                                            <td>Zusätzliche klinische Informationen, die für die Diagnosestellung relevant sein könnten</td>
+                                            <td>Raucheranamnese, Gewichtsverlust</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style="line-height: 1.5;">
+                                    Eine sorgfältige und präzise Eingabe dieser Informationen ermöglicht eine effektive Nutzung des Tools und unterstützt die Erstellung fundierter Differentialdiagnosen, die auf dem radiologisch-medizinischen Kontext basieren.
+                                </p>
+                            </div>
+                        </div>                        
+                        <div class="faq-item">
+                            <button class="faq-question">Wie können Läsionen für MRT, CT und Sonstiges präzise beschrieben werden?</button>
+                            <div class="faq-answer">
+                                <table>
+                                    <tr>
+                                        <th>Modalität</th>
+                                        <th>Beschreibung</th>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>MRT</strong></td>
+                                        <td>Signalintensitäten (z.B. hypointens in T1), Kontrastmittelaufnahme, Lokalisation</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>CT</strong></td>
+                                        <td>Dichtewerte (z.B. hyperdens), Kontrastverhalten, spezifische Zeichen (z.B. Verkalkungen)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sonstiges</strong></td>
+                                        <td>Physikalische Eigenschaften spezifisch für die Modalität (z.B. Echogenität bei Ultraschall)</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Welche Eingaben sollen in den Feldern "Eigenschaften" und "Sonstige Informationen" gemacht werden?</button>
+                            <div class="faq-answer">
+                                <p style="line-height: 1.5;">
+                                    Die Felder "Eigenschaften" und "Sonstige Informationen" sind entscheidend für die Generierung präziser Differentialdiagnosen. Hier ist eine detaillierte Anleitung:
+                                </p>
+                                <h3>Eigenschaften:</h3>
+                                <p>
+                                    In diesem Feld beschreiben Sie die <b>physikalischen und bildgebenden Merkmale</b> der Läsion. Die Beschreibung sollte <b>detailliert</b> und <b>spezifisch</b> sein, um die Genauigkeit der Differentialdiagnose zu erhöhen.
+                                </p>
+                                <h4>MRT:</h4>
+                                <ul>
+                                    <li><b>Signalintensität:</b> Angabe, ob die Läsion in T1- oder T2-gewichteten Aufnahmen hyper-, hypo- oder isointens erscheint.</li>
+                                    <li><b>Kontrastmittelaufnahme:</b> Vorhandensein oder Fehlen von Kontrastmittelaufnahme.</li>
+                                    <li><b>Grenzen:</b> Scharf oder unscharf begrenzte Läsion.</li>
+                                </ul>
+                                <h4>CT:</h4>
+                                <ul>
+                                    <li><b>Dichte:</b> Beschreibung der Läsion als hypodens, isodens oder hyperdens im Vergleich zum umgebenden Gewebe.</li>
+                                    <li><b>Verkalkung:</b> Vorhandensein oder Fehlen von Verkalkungen.</li>
+                                    <li><b>Randbeschaffenheit:</b> Angabe, ob der Rand glatt, lobuliert oder spikuliert ist.</li>
+                                </ul>
+                                <h3>Sonstige Informationen:</h3>
+                                <p>
+                                    Dieses Feld sollte <b>zusätzliche klinische Informationen</b> enthalten, die für die Differentialdiagnose relevant sein könnten, wie Symptome, Vorgeschichte und relevante Laborwerte.
+                                </p>
+                                <p><b>Beispieleingabe für eine Leberläsion in der MRT:</b></p>
+                                <ul>
+                                    <li><b>Eigenschaften:</b> Hyperintens in T2, keine signifikante Kontrastmittelaufnahme, scharfe Grenzen.</li>
+                                    <li><b>Sonstige Informationen:</b> Anamnese von chronischer Hepatitis, erhöhte Leberenzyme.</li>
+                                </ul>
+                                <p><b>Beispieleingabe für eine Lungenläsion in der CT:</b></p>
+                                <ul>
+                                    <li><b>Eigenschaften:</b> Rundherd, 2 cm Durchmesser, hyperdens, spikulierte Ränder.</li>
+                                    <li><b>Sonstige Informationen:</b> Raucher, Husten und Gewichtsverlust, keine früheren CT-Aufnahmen zum Vergleich verfügbar.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Prompt-Splitter -->
+                    <h2>Prompt-Splitter</h2>
+                    <div class="faq-item"> <button class="faq-question">Was ist der Zweck des Prompt-Splitters?</button>
+                        <div class="faq-answer">
+                            <p style="line-height: 1.5;">Der Prompt-Splitter <b>teilt einen langen Prompt-Text</b> in kleinere Abschnitte auf, um die
+                                <b>Begrenzung</b> der <b>Zeichenanzahl</b> einiger Chat-User-Interfaces <b>zu umgehen</b>. Es teilt den Text
+                                in mehrere Teile und fügt entsprechende Hinweise hinzu, um der KI zu signalisieren, ob
+                                es sich um den Anfang, die Mitte oder das Ende des gesamten Textes handelt.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Wie verwende ich den Prompt-Splitter Schritt für Schritt?</button>
+                        <div class="faq-answer">
+                            <p style="line-height: 1.5;">Zur Umgehung der Zeichenbeschränkung einiger KI-Chat User-Interfaces und Eingabe eines extralangen Prompts gehen Sie folgendermaßen vor:</p>
+                            <ul>
+                                <li>Fügen Sie Ihren langen Text in das große Eingabefeld ein.</li><br>
+                                <li>Wählen Sie die gewünschte Länge der Textblöcke aus dem Dropdown-Menü aus.</li><br>
+                                <li>Klicken Sie auf "Text zerlegen". Der Text wird in Abschnitte geteilt und in separate Textfelder unterhalb platziert.</li><br>
+                                <li>Klicken Sie neben jedem Textabschnitt auf "Kopieren", um ihn in die Zwischenablage zu kopieren. Der Button ändert sich zu "Kopiert", wenn der Text erfolgreich kopiert wurde.</li><br>
+                                <li>Fügen Sie die Textabschnitte nacheinander in Ihr KI-Chat-Interface ein.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Warum gibt es unterschiedliche Größen für die Chunks des Prompt
+                            Splitters?</button>
+                        <div class="faq-answer">
+                            <p style="line-height: 1.5;">Es gibt mehrere <b>unterschiedliche Zeichenlimits</b> für die Eingabe in Chat User-Interfaces textbasierter generativer KI:<br>
+                            <ul>
+                                <li><b>2000 Zeichen</b>: Microsoft Copilot Chat im Modus "Balanced"</li>
+                                <li><b>4000 Zeichen</b>: Microsoft Copilot Chat im Modus "Creative" und "Precise"</li>
+                                <li><b>18000 Zeichen</b>: Microsoft Copilot Notizbuch</li>
+                            </ul>
+                            </p>  
+                        </div>
+                    </div>
+
+                    <!-- Prompt-Templates -->
+                    <h2>Prompt-Templates</h2>
+                    <div class="faq-item">
+                        <button class="faq-question">Was ist der Zweck der Prompt-Templates?</button>
+                        <div class="faq-answer">
+                            <p style="line-height: 1.5;">Prompt-Templates sind <b>Vorlagen</b>, die Ihren <b>Prompts hinzugefügt</b> werden
+                                können, um die <b>Antworten</b> der KI in eine <b>bestimmte Richtung</b> zu lenken oder einen
+                                <b>bestimmten Antwortstil</b> zu erzielen. Sie geben einfach Ihren ursprünglichen Prompt ein
+                                und wählen dann aus den verfügbaren Templates, um die Antwort der KI zu verfeinern.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Wie setze ich die Prompt-Templates Schritt für Schritt
+                            ein?</button>
+                        <div class="faq-answer">
+                            <p style="line-height: 1.5;">Zur Optimierung eines bereits bestehenden Prompts gehen Sie folgendermaßen vor:</p>
+                            <ul>
+                                <li>Geben Sie Ihren Basis-Prompt in das Feld "Hier erscheint dein Prompt" ein.</li><br>
+                                <li>Wählen Sie durch Klick auf die entsprechenden Buttons die Templates aus, die Sie Ihrem
+                                Prompt hinzufügen möchten.</li><br>
+                                <li>Klicken Sie auf "Auswahl zurücksetzen", falls Sie Ihre Auswahl löschen und von vorne
+                                beginnen möchten.</li><br>
+                                <li>Klicken Sie auf "Prompt kopieren", um den angereicherten Prompt in die Zwischenablage zu
+                                kopieren. Der Button ändert sich zu "Kopiert", wenn der Text erfolgreich kopiert
+                                wurde.</li><br>
+                                <li>Fügen Sie den angereicherten Prompt in Ihr KI-Chat-Tool ein.</li>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Wie beeinflussen die verschiedenen Prompt-Templates die Antworten
+                            der KI?</button>
+                        <div class="faq-answer">
+                            <p style="line-height: 1.5;">
+                            <ul>
+                                <li>
+                                    <b>Vollständige Exzellenz:</b>
+                                    Bietet Antworten höchster Genauigkeit und Detailtiefe; berücksichtigt alle Aspekte
+                                    des Themas umfassend.
+                                </li><br>
+                                <li>
+                                    <b>Innovative Lösungen:</b>
+                                    Fördert kreative und zukunftsorientierte Denkweisen; generiert originelle und
+                                    innovative Lösungen.
+                                </li><br>
+                                <li>
+                                    <b>Faktenbasierte Recherche:</b>
+                                    Stellt detaillierte, auf soliden Quellen basierende Antworten bereit; präsentiert
+                                    fundierte und überprüfte Informationen.
+                                </li><br>
+                                <li>
+                                    <b>Kreative Meisterleistung:</b>
+                                    Demonstriert außergewöhnliche Kreativität und Originalität; eröffnet neue
+                                    Perspektiven und innovative Ansätze.
+                                </li><br>
+                                <li>
+                                    <b>Umfangreiches Wissen:</b>
+                                    Nutzt umfassendes Wissen und tiefe Analysen; hebt wichtige Informationen und
+                                    Erkenntnisse hervor.
+                                </li><br>
+                                <li>
+                                    <b>Umfassende Analyse:</b>
+                                    Betrachtet alle relevanten Aspekte des Themas; führt eine gründliche und
+                                    detaillierte Analyse durch und stellt komplexe Zusammenhänge klar dar.
+                                </li><br>
+                                <li>
+                                    <b>Internetrecherche:</b>
+                                    Integriert aktuelle und kontextbezogene Informationen aus dem Internet, um die
+                                    Relevanz und Aktualität der Antworten zu gewährleisten.
+                                </li><br>
+                                <li>
+                                    <b>Erklärung:</b>
+                                    Strukturiert Antworten transparent und nachvollziehbar; erklärt jeden Schritt und
+                                    jede Entscheidung detailliert und verständlich.
+                                </li><br>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script_General.js"></script>
+    <footer class="gradient-footer">
+        <div class="footer-text">
+            <span>© - ML - 2024</span>
+            <span class="footer-link">
+                Auch erreichbar aus dem Internet:
+                <a href="https://radaitools.pages.dev" class="external-link">radaitools.pages.dev</a>
+            </span>
+        </div>
+    </footer>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e94df41afe2e4345b21e9a47b25c129c"}'></script><!-- Cloudflare Pages Analytics --></body>
+
+</html>

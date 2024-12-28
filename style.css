@@ -1,0 +1,631 @@
+/* style.css */
+
+/* Transition für Container, Button, Input-Feld */
+.container, .button, .input-field {
+  transition: all 0.3s ease;
+}
+
+/* Einführungsanimation */
+@keyframes expand {
+  0% {
+      transform: scale(0.5);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+.tool-card {
+  animation: expand 0.5s ease-in-out;
+  animation-fill-mode: both;
+}
+
+/* Hover-Effekt */
+.tool-card:hover {
+  transform: translateY(-5px); /* Hebt die Karte leicht an */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Verstärkt den Schatten für einen Hebeeffekt */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Füge Transition hinzu */
+}
+
+/* Versteckt die Scrollbar in Webkit-basierten Browsern */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Versteckt die Scrollbar in Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* Grundlegende Stile */
+body {
+  background-color: #b8b8b8;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: #ffffff;
+  min-height: calc(100vh - 120px); /* 100% der Bildschirmhöhe minus die Höhe des Footers */
+  width: 80%;
+  max-width: 1200px;
+  border-radius: 6px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0px 0px 20px 10px #ffffff;
+  transition: box-shadow 0.3s ease;
+  transition: width 0.5s ease-in-out;
+  margin-bottom: 50px; /* Höhe des Footers + etwas zusätzlicher Platz */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#dynamicHeader {
+  width: 70%;
+  height: auto;
+  margin: auto; /* Zentriert das Bild im Container */
+}
+
+/* Stile für Eingabefelder, Textbereiche und Formularelemente */
+.input-field,
+.final-text,
+#mainText,
+textarea,
+input[type=text],
+select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-weight: 300;
+  font-size: 1em;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Stile für Buttons */
+button, .output-button {
+  background-color: #e9e9e9;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+  width: 18%; /* Make the buttons as wide as their container */
+  box-shadow: 7px 7px 14px #d3d3d3, -7px -7px 14px #ffffff;
+  transition: all 0.2s;
+  font-weight: 400;
+  font-size: calc(1em - 2px);
+  color: #000000;
+  cursor: pointer;
+}
+
+.button:hover,
+button:hover,
+.output-button:hover {
+  background-color: #d1d1d1;
+  box-shadow: 0px 0px 8px 0px #d3d3d3;
+}
+
+.button:active,
+button:active,
+.output-button:active {
+  background-color: #e0e0e0;
+  box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Stile für die Titelleiste */
+.title-bar {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(35, 35, 35, 0.811), transparent);
+  padding: 10px;
+  gap: 30px;
+}
+
+.title-bar-image {
+  height: 50px;
+  width: auto;
+}
+
+.title-button-row {
+  position: relative;
+  display: flex; /* Enable flexbox layout for buttons  */
+  justify-content: center; /* Evenly distribute buttons with space between them */
+  gap: 10px;
+  padding: 10px 20px;
+  width: 100%; /* This ensures the button row will have the same width as its parent */
+  flex-wrap: wrap; /* Standardmäßig kein Umbruch */
+}
+
+.title-bar-link {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.title-bar-link:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+/* Stile für Dropdown */
+.dropbtn {
+  background-color: inherit;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  min-width: 160px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  top: 100%; /* Setzt den Top-Wert auf 100% der Höhe des Elternelements, um es direkt unter dem Button zu positionieren */
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+/* Hide the hamburger menu on tablet and desktop views */
+.hamburger-menu {
+  display: none;
+}
+
+/* Hamburger Menu Icon Style */
+.menu-icon {
+  display: block;
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+}
+
+.menu-icon span {
+  display: block;
+  background: white;
+  height: 3px;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+/* Änderungen für das geöffnete Menü-Icon */
+.menu-icon.opened span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-icon.opened span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.opened span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Style for the mobile navigation menu */
+.mobile-nav {
+  position: fixed; /* Ändere von absolute zu fixed */
+  top: 60px; /* Höhe der Titelleiste anpassen */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 60px); /* Setzt die Höhe auf die gesamte Höhe des Viewports minus die Höhe der Titelleiste */
+  background: rgba(51, 51, 51, 0.9); /* Hintergrundfarbe des Menüs und Transparenz */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  flex-direction: column;
+  display: none;
+  z-index: 1000;
+  overflow-y: auto; /* Fügt Scrollen hinzu, falls der Inhalt den Viewport überschreitet */
+}
+
+.mobile-nav-link {
+  color: white;
+  padding: 15px 20px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.mobile-nav-link:hover {
+  background-color: #575757;
+}
+
+/* Stile für Tabellen */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Stile für den Footer */
+.footer {
+  position: absolute; /* Oder 'fixed', wenn der Footer immer sichtbar sein soll */
+  bottom: 0;
+  width: 100%;
+  background-color: #333; /* Dark background for subtlety */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.footer-text {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  max-width: 1200px;
+  font-size: 12px;
+}
+
+.gradient-footer {
+  font-size: 100%;
+  padding: 10px;
+}
+
+.gradient-footer {
+  background-image: linear-gradient(rgba(85, 85, 84, 0), #555554);
+  height: 40px;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.external-link {
+  color: white;
+}
+
+/* Überarbeitete Button- und Bild-Stile */
+.button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap; /* Verhindert Zeilenumbruch */
+  gap: 20px; /* Harmonischer Abstand */
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 10px; /* Harmonischer Abstand zwischen Logo und Beschriftung */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  background-color: #FFF;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  height: 50px; /* Einheitliche Höhe für alle Buttons */
+}
+
+.button img {
+  height: 30px; /* Einheitliche Höhe für Logos */
+}
+
+.button span {
+  display: block;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+#generateButton {
+  width: 150px; /* Feste Breite für den Button */
+}
+
+/* Stile für Differentialdiagnosen */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Anpassung nach Bedarf */
+}
+
+.input-field {
+  flex-grow: 1;
+}
+
+/* Stile für FAQ-Fragen */
+.faq-question {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 90%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 18px;
+  transition: 0.4s;
+}
+
+.faq-question:after {
+  content: '\002B'; /* Pluszeichen */
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.faq-question.active:after {
+  content: "\2212"; /* Minuszeichen */
+}
+
+.faq-answer {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+/* Stile für Unterfragen innerhalb der FAQ */
+.faq-sub-question .faq-question {
+  font-size: 0.9em; /* Etwas kleinere Schriftgröße für Unterfragen */
+  padding-left: 20px; /* Einrückung für Unterfragen zur Darstellung der Hierarchie */
+}
+
+/* Stile für den Prompt-Splitter */
+.chunk-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px; /* Abstand zwischen Textfeld und Button */
+  width: 100%; /* Match the width of the selection field */
+  margin-bottom: 30px; /* Größerer Abstand zwischen den Chunks */
+}
+
+/* Stile für Prompt-Templates */
+.button-grid {
+  display: flex;
+  flex-wrap: wrap; /* Ermöglicht das Umfließen von Elementen */
+  justify-content: space-around; /* Verteilt die Elemente gleichmäßig */
+  gap: 10px; /* Definiert den Abstand zwischen den Elementen */
+}
+
+.button-grid .button {
+  flex-grow: 1; /* Ermöglicht den Buttons, den verfügbaren Platz zu nutzen */
+  margin: 5px; /* Fügt einen kleinen Abstand hinzu */
+  min-width: 100px; /* Setzt eine minimale Breite, um Überfließen zu verhindern */
+}
+
+/* Stile für index.html HOME */
+.tool-cards-container {
+  display: flex; /* Ermöglicht flexibles Layout */
+  flex-wrap: wrap; /* Erlaubt Umbrüche, sodass Items in die nächste Zeile fließen */
+  justify-content: center; /* Zentriert die Items horizontal */
+  gap: 20px; /* Definiert den Abstand zwischen den Toolcards */
+  padding: 20px; /* Etwas Abstand innerhalb des Containers */
+}
+
+.tool-card {
+  flex: 1 1 150px; /* Ermöglicht Flexibilität, startet bei 150px Breite */
+  max-width: 220px;
+  max-height: 200px; /* Feste Maximalhöhe */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Nutzt den verfügbaren Platz zwischen den Elementen */
+  align-items: center; /* Zentriert Inhalte vertikal */
+  background-color: #fafafa; /* Hintergrundfarbe der Toolcards */
+  padding: 15px;
+  border-radius: 10px; /* Abgerundete Ecken */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Schatten für 3D-Effekt */
+  text-align: center; /* Zentriert den Text innerhalb der Toolcard */
+  text-decoration: none; /* Entfernt Unterstreichung von Links */
+  color: #000; /* Textfarbe */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Glatte Übergänge für Hover-Effekte */
+}
+
+.tool-card img {
+  width: 50px; /* Größe des Icons */
+  height: auto; /* Behält das Seitenverhältnis des Icons bei */
+  margin-bottom: 5px;
+}
+
+.tool-card h3, .tool-card p {
+  margin: 5px 0; /* Reduzierter Abstand oben und unten für Überschrift und Text */
+  font-size: 0.9em; /* Schriftgröße der Überschrift */
+  text-align: center; /* Zentriert den Text */
+}
+
+.tool-card p {
+  font-size: 0.8em; /* Schriftgröße des Beschreibungstextes */
+  max-width: 90%; /* Begrenzt die maximale Breite des Textes */
+  word-wrap: break-word; /* Stellt sicher, dass lange Wörter umgebrochen werden */
+}
+
+/* Responsive Design Anpassungen */
+@media (max-width: 1200px) {
+  .container {
+    width: 80%;
+    margin: 50px auto;
+    margin-bottom: 60px;
+    padding: auto;
+  }
+
+  #dynamicHeader {
+    width: 70%;
+    height: auto;
+    margin: auto; /* Zentriert das Bild im Container */
+  }
+
+  .output-button {
+    margin-top: 10px; /* Add space between the chunk field and the button */
+  }
+}
+
+@media (max-width: 1000px) {
+  .tool-card {
+    width: calc(45% - 40px); /* Passt die Breite an, um 2 Toolcards pro Reihe anzuzeigen */
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: 80%;
+    margin: 40px auto;
+    margin-bottom: 50px;
+    padding: auto;
+  }
+
+  .button span {
+    display: none; /* Versteckt die Beschriftung auf kleineren Bildschirmen */
+  }
+
+  .button {
+    padding: 5px;
+  }
+
+  .output-button {
+    font-size: calc(0.8em - 2px);
+  }
+
+  .output-button {
+    margin-top: 10px; /* Add space between the chunk field and the button */
+  }
+
+  footer {
+    font-size: 0.8em;
+  }
+
+  .tool-cards-container {
+    justify-content: space-around; /* Stellt sicher, dass bei weniger Platz die Karten gleichmäßig verteilt werden */
+    padding: 10px; /* Reduzierter Innenabstand für sehr kleine Bildschirme */
+  }
+
+  .tool-card {
+    width: calc(45% - 40px); /* Passt die Breite an, um 2 Toolcards pro Reihe anzuzeigen */
+  }
+}
+
+/* Media Query für Smartphones */
+@media (max-width: 640px) {
+  .container {
+    width: 95%;
+    margin: 30px auto;
+    margin-bottom: 50px;
+    padding: auto;
+  }
+
+  .dropdown {
+    display: block; /* Stellt sicher, dass das Dropdown-Menü korrekt angezeigt wird */
+  }
+
+  .title-bar {
+    justify-content: space-between;
+  }
+
+  .hamburger-menu {
+    display: block; /* Show the hamburger icon */
+  }
+
+  .menu-icon span,
+  .menu-icon.opened span:nth-child(1),
+  .menu-icon.opened span:nth-child(3) {
+    background-color: #fff; /* Farbanpassung für bessere Sichtbarkeit */
+  }
+
+  .title-bar-link {
+    display: none; /* Hide title bar links */
+  }
+
+  .mobile-nav.active {
+    display: flex; /* Show navigation menu when active */
+  }
+
+  .tool-cards-container {
+    justify-content: space-around; /* Stellt gleichmäßige Verteilung auf kleineren Bildschirmen sicher */
+  }
+
+  .tool-card {
+    flex-basis: calc(40% - 40px); /* Passt die Basisgröße an, um zwei Karten pro Reihe zu ermöglichen */
+    margin: 10px; /* Gleichmäßiger Abstand um jede Karte */
+    font-size: 3vw; /* Dynamische Textskalierung */
+    padding: 10px; /* Innenabstand zur Verhinderung von Überlauf */
+  }
+
+  .tool-card img {
+    max-width: 60%; /* Bilder skalieren passend zur Kartenbreite */
+    height: auto; /* Seitenverhältnis der Bilder bewahren */
+  }
+
+  .tool-card h3 {
+    font-size: 3vw; /* Dynamische Textskalierung */
+  }
+
+  .tool-card p {
+    display: none; /* Versteckt den Erklärungstext auf kleinen Bildschirmen */
+  }
+
+  .chunk-container {
+    flex-wrap: wrap; /* Ermöglicht Umbruch der Elemente */
+    justify-content: center; /* Zentriert die Buttons, wenn weniger Platz verfügbar ist */
+  }
+}
+
+/* Optionale Ergänzung für sehr kleine Bildschirme */
+@media (max-width: 400px) {
+  .tool-card {
+    flex-basis: 100%; /* Eine Karte pro Reihe auf sehr kleinen Bildschirmen */
+    font-size: 4vw; /* Etwas größere Textskalierung für bessere Lesbarkeit */
+  }
+}
+

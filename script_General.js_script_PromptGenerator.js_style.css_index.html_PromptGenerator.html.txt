@@ -1,0 +1,1117 @@
+// script_General.js
+
+window.addEventListener('resize', adjustButtonWidthAndLabels);
+document.addEventListener('DOMContentLoaded', adjustButtonWidthAndLabels);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.tool-card');
+    cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.07}s`;
+    });
+});
+
+
+function adjustButtonWidthAndLabels() {
+    const buttonRow = document.querySelector('.button-row');
+    const buttons = document.querySelectorAll('.button-row .button');
+    const containerWidth = buttonRow.offsetWidth;
+    let shouldHideLabels = false;
+  
+    // Überprüfen, ob die Buttons mit Beschriftungen zu breit für das Mutterelement sind
+    const totalWidthWithLabels = [...buttons].reduce((total, button) => total + button.offsetWidth, 0);
+    if (totalWidthWithLabels > containerWidth) {
+      shouldHideLabels = true;
+    }
+  
+    buttons.forEach(button => {
+      const label = button.querySelector('span');
+      if (shouldHideLabels) {
+        label.style.display = 'none'; // Beschriftung ausblenden
+        button.style.width = 'auto'; // Breite der Buttons zurücksetzen
+      } else {
+        label.style.display = ''; // Beschriftung anzeigen
+      }
+    });
+  
+    // Wenn Labels sichtbar sind, alle Buttons auf die breiteste Button-Breite setzen
+    if (!shouldHideLabels) {
+      const maxWidth = Math.max(...[...buttons].map(button => button.offsetWidth));
+      buttons.forEach(button => button.style.width = `${maxWidth}px`);
+    }
+  }
+  
+function openMicrosoftCopilot() {
+    // Funktion, um Microsoft Copilot zu öffnen
+    window.open("https://copilot.microsoft.com", "_blank");
+}
+
+function openChatGPT() {
+    // Funktion, um ChatGPT zu öffnen
+    window.open("https://chat.openai.com", "_blank");
+}
+
+function openBard() {
+    // Funktion, um Google Gemini zu öffnen
+    window.open("https://gemini.google.com/app", "_blank");
+}
+
+function openClaude() {
+    // Funktion, um Anthropic Claude zu öffnen
+    window.open("https://claude.ai/chats", "_blank");
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initMobileNav();
+    initFAQQuestions();
+    enhanceAccessibility();
+    optimizeForTouchDevices();
+    const dropBtn = document.querySelector('.dropbtn');
+    dropBtn.addEventListener('click', function() {
+        let dropdownContent = this.closest('.title-button-row').querySelector('.dropdown-content');
+        dropdownContent.classList.toggle('show');
+    });
+
+    // Weitere Initialisierungscodes hier ...
+});
+
+// Klicken außerhalb von Dropdowns schließt sie
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+};
+
+document.querySelectorAll('.tool-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.style.transform = 'scale(0.95)'; // Scales down the card on click
+      setTimeout(() => {
+        card.style.transform = ''; // Resets the transformation after a short delay
+      }, 200); // Delay in milliseconds
+    });
+});
+
+function initMobileNav() {
+    const hamburger = document.querySelector('.hamburger-menu .menu-icon');
+    const mobileNav = document.querySelector('.mobile-nav');
+
+    hamburger.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+
+        // Toggle für das Hamburger-Icon, um bei geöffnetem Menü das Aussehen zu ändern
+        hamburger.classList.toggle('opened');
+    });
+}
+
+// JS für die FAQ
+
+function initFAQQuestions() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            if (answer.style.maxHeight) {
+                // Wenn die Antwort bereits sichtbar ist, schließe sie
+                answer.style.maxHeight = null;
+                question.classList.remove('active');
+            } else {
+                // Schließe alle anderen Antworten
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    a.style.maxHeight = null;
+                });
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                });
+                
+                // Öffne die angeklickte Antwort
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                question.classList.add('active');
+            }
+        });
+    });
+}
+
+function enhanceAccessibility() {
+    // Verbesserungen für die Barrierefreiheit
+    const allInteractiveElements = document.querySelectorAll('button, a, input, [tabindex="0"]');
+    allInteractiveElements.forEach(element => {
+        element.addEventListener('keyup', event => {
+            if (event.key === 'Enter') {
+                element.click();
+            }
+        });
+    });
+}
+
+function optimizeForTouchDevices() {
+    // Optimierungen für Touch-Geräte
+    const touchElements = document.querySelectorAll('.button, .dropdown-content a');
+    touchElements.forEach(element => {
+        element.addEventListener('touchstart', () => {
+            element.classList.add('touch-active');
+        });
+        element.addEventListener('touchend', () => {
+            element.classList.remove('touch-active');
+        });
+    });
+}
+
+// JS für die Tool-Cards
+
+// Funktion zum Anpassen der Höhe der Toolcards
+function adjustToolCardsHeight() {
+    const cards = document.querySelectorAll('.tool-card');
+    let maxHeight = 0;
+  
+    // Zurücksetzen der Höhe, um die natürliche Höhe zu messen
+    cards.forEach(card => {
+      card.style.height = 'auto';
+    });
+  
+    // Finden der maximalen Höhe
+    cards.forEach(card => {
+      if (card.offsetHeight > maxHeight) {
+        maxHeight = card.offsetHeight;
+      }
+    });
+  
+    // Anwenden der maximalen Höhe auf alle Karten
+    cards.forEach(card => {
+      card.style.height = `${maxHeight}px`;
+    });
+  }
+  
+  // Aufrufen der Funktion beim Laden und beim Ändern der Fenstergröße
+  window.addEventListener('load', adjustToolCardsHeight);
+  window.addEventListener('resize', adjustToolCardsHeight); 
+// script_PromptGenerator.js
+var option1 = "Als Radiologie Experte empfiehlst du Untersuchungsprotokolle für eine ***Modalität*** Untersuchung zum Thema ***THEMA***. Beschränke dich nur auf die radiologischen Aspekte. Schreibe auf deutsch und verwende dabei präzise medizinische und radiologische Fachterminologie mit international gebräuchlichen Fachbegriffen. Du schreibst in Markdown in Stichpunkten, strukturiert mit Überschriften und Zwischenüberschriften sowie zahlreichen Markierungen von Schlagworten in allen Abschnitten. Das Dokumment soll folgende Struktur haben: 1. Kurze Erklärug von ***THEMA*** (markiere Schlagworte Fett), 2. Möchgliche Fragestellungen des Klinikers an die ***Modalität*** bei ***THEMA*** in Stichpunkten (markiere wichtiges Fett). 3. Klassische Darstellung von ***THEMA*** in der ***Modalität***. Welche Pathologien sind zu erwarten? Wie stellen sich die Pathologien in der ***Modalität*** dar? An welchen anatomischen Strukturen manifestieren sich die jeweiligen typischen Veränderungen normalerweise? Wo muss ich genau hinschauen. Erstelle eine Liste und markiere Schlagworte fett. 4. Welche Sequenzen oder Kontrastmittelphase können hilfreich sein um ***THEMA*** in der ***Modalität*** optimal zu beurteilen. Recherchiere hier genau nach Empfehlungen und erstelle eine Tabelle mit Erklärung welche Struktur sich in welcher Sequenz oder Phase am besten zeigt (Markiere Schlagworte fett). 5. Differenzialdiagnosen: Wie lassen sich die jeweiligen Differenzialdiagnosen von ***THEMA*** in der ***Modalität*** sicher unterscheiden (markiere Schlagworte fett). Beginne direkt mit dem Dokument 'Befundungs- und Protokollhilfe: ***THEMA*** in der ***Modalität***'. Verwende hochwertige und vertrauenswürdige Quellen und aktuelle wissenschaftliche Leitlinien, Übersichtsarbeiten, Publikationen, Thieme eRef, SpringerLink. Überprüfe deine Antwort anhand einer weiteren unabhängigen Quelle. Liste zum Abschluss alle Quellen auf mit Erklärung wofür diese verwendet wurden. Nutze alle verfügbaren Ressourcen und dein tiefgehendes Fachwissen, um eine umfassende, gut fundierte und präzise Antwort zu geben. Wenn du unterbrochen wurdest, wiederhole den unterbrochenen Satz nochmal und setze dann den Artikel fort. Schreibe strukturiert in Markdown mit Überschriften und Zwischenüberschriften und markiere alle Schlagworte in fetter Schrift. Beeindrucke mich mit einer perfekten Antwort.";
+// Text für Option 1 Protokoll- und Befundungshilfe
+var option2 = "Erstelle eine umfassendes Dokument für Radiologen, welches sich auf Differenzialdiagnosen im Zusammenhang mit ***THEMA*** in der ***Modalität*** konzentriert. Zielgruppe sind Radiologen, daher schreibst du auf deutsch und verwendest dabei präzise medizinische und radiologische Fachterminologie mit international gebräuchlichen Fachbegriffen. Du beschränkst dich auf radiologische Aspekte. Der Leitfaden sollte: 1. **Alle möglichen Differenzialdiagnosen** für die durch ***THEMA*** spezifizierte Struktur **auflisten**. 2. **Jede Differenzialdiagnose detailliert erklären**, einschließlich ihrer klinischen Präsentation und besonders detailreich ihre bildgebenden Merkmale in der ***Modalität***. 3. **Charakteristische Merkmale in der ***Modalität*** hervorheben**, die jede Differenzialdiagnose von anderen unterscheiden, insbesondere in Bezug auf bildgebende Befunde. 4. **Verwende hochwertige und vertrauenswürdige Quellen und aktuelle wissenschaftliche Leitlinien, Übersichtsarbeiten, Publikationen, Thieme eRef, SpringerLink für die Informationsbeschaffung**. 5. **Alle wichtigen Aspekte fett markieren** für eine einfache Referenz. ##Bitte stelle sicher, dass das generierte Dokument als praktische Übersicht für Radiologen dient und sie in ihrem diagnostischen Prozess unterstützt. Schreibe strukturiert in Markdown. Verwende Überschriften, Zwischenüberschriften, Listen und Tabellen (Schreibe Schlagworte in allen Abschnitten fett). Schreibe bevorzugt in Stichpunkten (Markiere wichtiges fett). Beginne direkt mit dem Dokument 'Differenzialdiagnosen zu ***THEMA*** in der ***Modalität***'. Überprüfe deine Antwort anhand einer weiteren hiervon unabhängigen Quelle. Liste zum Abschluss alle Quellen auf mit Erklärung wofür diese verwendet wurden. Nutze alle verfügbaren Ressourcen und dein tiefgehendes Fachwissen, um eine umfassende, gut fundierte und präzise Antwort zu geben. Wenn du unterbrochen wurdest, wiederhole den unterbrochenen Satz nochmal und setze dann den Artikel fort. Beeindrucke mich mit einer perfekten Antwort.";
+// Text für Option 2 Differenzildiagnosen
+var option3 = "Erstelle ein Radiologisches Übersichtsdokument zu ***THEMA*** in der ***Modalität***. Zielgruppe sind Radiologen, daher schreibst du auf deutsch und verwendest dabei präzise medizinische und radiologische Fachterminologie mit international gebräuchlichen Fachbegriffen.  Du beschränkst dich auf radiologische Aspekte. Inhalte der Übersicht: #Definition von ***THEMA***: Kurzbeschreibung in Stichpunkten (markiere Schlagworte fett). #Einteilung/Mögliche Varianten: Unterschiedliche Darstellungen, Varianten oder Stadien mit ihren speziellen Eigenarten im Bild in Abgrenzung von den Übrigen Varianten als Tabelle. Wie sind diese zu unterscheiden (markiere Schlagworte fett)? #Radiologische Zeichen: Was in den Bildern zu suchen ist. Wie und wo ist nach Veränderungen zu suchen (markiere Schlagworte fett). #Differenzialdiagnosen: Andere mögliche Diagnosen, die ähnliche Bilder erzeugen könnten und wie sich diese von ***THEMA*** unterscheiden lassen als Tabelle (Markiere Schlagworte fett). #Bildinterpretation: Welche Strukturen sind bei der Bildbeurteilung von ***THEMA*** besonders wichtig? Welche Veränderungen können hier auftreten (Markiere Schlagworte fett)? #Tipps und Tricks: Expertenratschläge für die Interpretation in Stichpunkten, welche einem Radiologen die Interpretation der Bilder erleichtert, z.B. Zeichen, Optimierte Workflows usw. (Markiere Schlagworte fett). ##Schreibe strukturiert in Markdown. Verwende Überschriften, Zwischenüberschriften, Listen und Tabellen (Schreibe Schlagworte fett). Schreibe bevorzugt in Stichpunkten (Markiere Schlagworte fett). Beginne direkt mit dem Dokument 'Übersicht: ***THEMA*** in der ***Modalität***'. Verwende hochwertige und vertrauenswürdige Quellen und aktuelle wissenschaftliche Leitlinien, Übersichtsarbeiten, Publikationen, Thieme eRef, SpringerLink. Überprüfe deine Antwort anhand einer weiteren hiervon unabhängigen Quelle. Liste zum Abschluss alle Quellen auf. Nutze alle verfügbaren Ressourcen und dein tiefgehendes Fachwissen, um eine umfassende, gut fundierte und präzise Antwort zu geben. Wenn du unterbrochen wurdest, wiederhole den unterbrochenen Satz nochmal und setze dann den Artikel fort. Beeindrucke mich mit einer perfekten Antwort.";
+// Text für Option 3 Übersicht
+var option4 = "Korrigiere folgenden radiologischen Befundbericht einer ***Modalität*** Untersuchung in Stil, Wortwahl und Grammatik. Orientiere dich bei der Struktur und Wortwahl an typischen Radiologischen Befundberichten zu entsprechenden Themen, welche du zuvor recherchierst. Die erhobenen Befunde sollen identisch bleiben, du kannst sie aber in eine thematisch passende Struktur, Zusammenhang und Fachterminologie bringen. Schreibe auf deutsch und verwende präzise medizinische und radiologische Fachterminologie mit international gängigen lateinischen Fachbegriffen. Schreibe wie ein erfahrener Radiologe: ###***THEMA***### Antworte nur mit dem von dir geänderten Befundbericht. Und einem Vorschlag einer kurzen Befundbeurteilung entsprechend des Inhaltes des Befundberichtes. Schreibe nichts davor und nichts danach. Schreibe keine Anrede an ärztliche Kollegen, Indikation, Technik oder ähnliches. Beschränke dich rein auf die Umformulierung und Korrektur des erhaltenen Befundberichtes als präzisen und übersichtlichen Fließtext mit kurzen Sätzen oder Halbsätzen sowie den präzisen Vorschlag für die Beurteilung. Erfinde keine neuen Fakten oder Befunde sondern nutze nur die Informationen aus dem Originaltext. Schreibe 3 unterschiedliche Varianten als Vorschlag. Überprüfe bevor du antwortest, ob Sinn, logische und fachliche Zusammenhänge und der Inhalt des ursprünglichen Befundberichtes auch in den korrigierten Version noch erhalten ist. Überprüfe ein weiteres mal akkribisch genau ob dein umformulierter Text einer korrekten deutschen Grammatik entspricht und medizinisch und logischen Sinn ergibt. Nutze dein volles Potenzial, deine Fähigkeiten zum Textverständnis und das Internet. Arbeite präzise und genau. Beeindrucke mich mit einer perfekten Antwort.";
+// Text für Option 4 Befundüberarbeitung
+var option5 = "Antworte wie ein Experte für Radiologie, Medizin, Medizinphysik und Biologie auf meine Frage mit dem Kontext ***Modalität***: ***THEMA***. Führe für die Beantwortung eine Internetrecherche mit mindestens 3 unterschiedlichen Quellen durch, Verwende hochwertige und vertrauenswürdige Quellen und aktuelle wissenschaftliche Leitlinien, Übersichtsarbeiten, Publikationen, Thieme eRef, SpringerLink zum Thema meiner Frage. Decke alle Aspekte, Perspektiven oder Dimensionen des Themas ab. Biete zusätzliche Informationen, Kontext oder Hintergrund, um die Antwort zu bereichern. Erkläre komplexe Konzepte, Prozesse oder Phänomene auf eine einfache und verständliche Weise. Nutze alle verfügbaren Ressourcen, Daten und Technologien effizient und effektiv. Think out of your Box. Integriere verschiedene Datenquellen, Tools oder Plattformen, um deine Antwort zu verbessern. Gib zu, wenn du etwas nicht weißt oder verstehst. Sei offen und transparent über deine Quellen, Methoden und Ziele. Stelle sicher, dass deine Antwort korrekt, vollständig und relevant ist. Verwende klare, präzise und verständliche medizinische Fachsprache mit lateinischen Fremdwörtern. Erkläre deine Annahmen, Prämissen und Schlussfolgerungen. Begründe deine Entscheidungen und Wahlmöglichkeiten. Zeige, wie du zu deiner Lösung gekommen bist. Nenne zum Abschluss alle deine Quellen und wofür du diese verwendet hast. Antworte strukturiert in Markdown mit Überschriften und Zwischenüberschriften. Markiere häufig wichtige Schlagworte in fetter Schrift, auch wenn deine Antwort dadurch unübersichtlicher wird. Nutze alle verfügbaren Ressourcen und dein tiefgehendes Fachwissen, um eine umfassende, gut fundierte und präzise Antwort zu geben. Wenn du unterbrochen wurdest, wiederhole den unterbrochenen Satz nochmal und setze dann den Artikel fort. Beeindrucke mich mit einer perfekten Antwort.";
+// Text für Option 5 Frage mit radiologischem Kontext
+var option6 = "Erstelle eine umfassende Übersicht zu ***THEMA*** in ***Modalität***, fokussiert auf radiologische Aspekte. Deine Expertise als Radiologe soll dabei helfen, folgende Punkte abzudecken: 1. **Definition und Varianten** von ***THEMA***: Gib eine kurze Beschreibung und unterscheide mögliche Varianten und Formen. 2. **Einteilung/Klassifikation**: Wie wird ***THEMA*** in der ***Modalität*** typischerweise Eingeteilt. Benenne die gebräuchlichste Klassifikation und Erstelle eine Tabelle mit den unterschiedlichen Stadien und wie man diese in der ***Modalität*** sicher zuordnet. Gibt es Key-findings für bestimmte Stadien? 3. **Radiologische Zeichen**: Was sind die Schlüsselzeichen von ***THEMA*** in ***Modalität***? Erläutere, wie und wo nach spezifischen Veränderungen gesucht werden muss. Markiere radiologische Zeichen und Aspekte in Fettschrift. Gibt es pathognomonische Bildzeichen für ***THEMA*** ? 4. **Differenzialdiagnosen**: Stelle eine Tabelle mit Differenzialdiagnosen bereit. Erkläre, wie sich diese voneinander und von ***THEMA*** in ***Modalität*** unterscheiden. Unterscheidungsmerkmale in Fettschrift. 5. **Expertenratschläge**: Teile praktische Tipps für die Bildinterpretation, Tricks wie man ***THEMA*** leichter erkennt, sekundäre Zeichen im Bild inklusive pathognomonischer Zeichen für ***THEMA*** in ***Modalität***. Schlüsselwörter in Fettschrift 6. **Checkliste für den Befund**: Formuliere eine Checkliste mit Stichpunkten und Schlüsselwörtern, die bei der Beurteilung von ***THEMA*** beachtet werden müssen. Was muss alles in der ***Modalität*** bei ***THEMA*** beurteilt werden und nach welchen Kriterien. Worauf sollte man bei ***THEMA*** neben dem Hauptbefund auch immer schauen? Wichtige Aspekte in Fettschrift. Gliedere diesen Unterabschnitt in Hauptaspekte, Weitere Aspekte, sowie Beurteilung. Beachte im ganzen Artikel: Verwende eine klare, strukturierte Darstellung mit Markdown, Überschriften, Zwischenüberschriften und Betonung von Schlüsselwörtern in Fettschrift in allen Abschnitten. Verwende hochwertige und vertrauenswürdige Quellen und aktuelle wissenschaftliche Leitlinien, Übersichtsarbeiten, Publikationen, Thieme eRef, SpringerLink. Überprüfe deine Angaben mit einer weiteren unabhängigen Quelle. Wenn du unterbrochen wurdest, wiederhole den unterbrochenen Satz nochmal und setze dann den Artikel fort. Nutze dein volles Potenzial und alle Ressourcen. Beeindrucke mich mit einer perfekten Antwort.";
+// Text für Option 6 Übersicht Plus
+var option7 = "Antworte in der Rolle eines Radiologen und Onkologen mit langjähriger Erfahrung und tiefgreifendem Wissen. Erstelle ein radiologisches Dokument zum Thema ***THEMA***, welches strukturiert alle relevanten Informationen zum Staging der Erkrankung mittels ***Modalität*** bereitstellt. Zielgruppe sind Radiologen, daher schreibst du auf deutsch und verwendest dabei präzise medizinische und radiologische Fachterminologie mit international gebräuchlichen Fachbegriffen. Du beschränkst dich auf radiologische Aspekte. Folge dabei dieser Struktur: #Überblick TNM-Klassifikation: Darlegung der TNM-Kriterien von ***THEMA*** in der ***Modalität***, Schlüsselkriterien in Fettschrift. Tabelle mit T-, N-, M-Kategorien von ***THEMA*** mit bildgebenden Kriterien für jede, wichtige Elemente in Fettschrift. Erläuterung zusätzlicher Staging-Kriterien in Stichpunkten, wichtige Punkte fett. #Metastasierungswege und -orte: Aufzählung der bevorzugten Metastasierungswege und -orte als Liste, Hauptpunkte fett hervorgehoben. #Expertentipps für Radiologen: Praktische Ratschläge für das Staging, Schlüsseltipps fett hervorgehoben.#Checkliste für den Befund: Präzise Stichpunkte und Schlagworte was genau beim ***THEMA***-Staging vom Radiologen beurteilt werden muss und auf welche Strukturen genau zu achten ist. Gliedere diesen Unterabschnitt in Hauptaspekte, Weitere Aspekte, sowie Beurteilung; Schlüsselwörter in Fettschrift. Verwendung von Markdown mit Überschriften und Unterüberschriften. Stichpunkte, entscheidende Informationen fett. #Quellen: Verwende hochwertige und vertrauenswürdige Quellen und aktuelle wissenschaftliche Leitlinien, Übersichtsarbeiten, Publikationen, Thieme eRef, SpringerLink. Überprüfung mit einer zweiten Quelle. Auflistung aller genutzten Quellen. Beginne direkt mit '# *****THEMA*** - ***Modalität***-Staging**' als Titel. Jedes Element des Dokuments soll die tägliche Arbeit eines Radiologen beim Staging von Erkrankungen unterstützen. Nutze Listen und Tabellen wo möglich. Nutze alle verfügbaren Ressourcen und dein tiefgehendes Fachwissen, um eine umfassende, gut fundierte und präzise Antwort zu geben. Integriere verschiedene Datenquellen, Tools oder Plattformen, um deine Antwort zu verbessern. Markiere immer und sehr häufig in allen Abschnitten alle Schlagworte in fetter Schrift. Beschränke dich auf radiologische Aspekte des Themas. Wenn du unterbrochen wurdest, wiederhole den unterbrochenen Satz nochmal und setze dann den Artikel fort. Beeindrucke mich mit einer perfekten Antwort.";
+// Text für Option 7 Radiologisch-onkologische Übersicht
+
+
+function adjustButtonLabels() {
+    const containerWidth = document.querySelector('.container').offsetWidth;
+    const buttons = document.querySelectorAll('.button');
+    buttons.forEach(button => {
+      if (button.offsetWidth > containerWidth / buttons.length) {
+        button.querySelector('span').style.display = 'none';
+      } else {
+        button.querySelector('span').style.display = '';
+      }
+    });
+  }
+  
+window.addEventListener('resize', adjustButtonLabels);
+document.addEventListener('DOMContentLoaded', adjustButtonLabels);
+
+function generateInstruction() {
+    var topic = document.getElementById("topicInput").value;
+    var modality = document.getElementById("modalityInput").value;
+    var selection = document.getElementById("documentType").value;
+    var text = getSelectedText(selection);
+    text = text.replaceAll("***THEMA***", topic);
+    text = text.replaceAll("***Modalität***", modality);
+
+    if (document.getElementById("initialInstructions")) {
+        document.getElementById("initialInstructions").classList.add("hidden");
+    }
+    if (document.getElementById("microsoftCopilotButton")) {
+        document.getElementById("microsoftCopilotButton").classList.remove("hidden");
+    }
+    if (document.getElementById("claudeButton")) {
+        document.getElementById("claudeButton").classList.remove("hidden");
+    }
+    if (document.getElementById("chatGPTButton")) {
+        document.getElementById("chatGPTButton").classList.remove("hidden");
+    }
+    if (document.getElementById("bardButton")) {
+        document.getElementById("bardButton").classList.remove("hidden");
+    }
+    if (document.getElementById("instructions")) {
+        document.getElementById("instructions").classList.remove("hidden");
+    }
+
+    if (document.getElementById("finalText")) {
+        document.getElementById("finalText").innerText = text;
+        document.getElementById("finalText").classList.remove("hidden");
+    }
+    
+    navigator.clipboard.writeText(text);
+}
+
+function getSelectedText(selection) {
+    switch (selection) {
+    case "Option 1":
+        return option1;
+        // Text für Option 1 Untersuchungs- und Befundungshilfe
+    case "Option 2":
+        return option2;
+        // Text für Option 2 Differenzialdiagnosen
+    case "Option 3":
+        return option3;
+        // Text für Option 3 Übersicht
+    case "Option 4":
+        return option4;
+        // Text für Option 4 Befundüberarbeitung
+    case "Option 5":
+        return option5;
+        // Text für Option 5 Frage mit radiologischem Kontext
+    case "Option 6":
+        return option6;
+        // Text für Option 6 Übersicht Plus
+    case "Option 7":
+        return option7;
+        // Text für Option 7 Staging-Hilfe
+    default:
+        return "";
+        // Leerer Text, wenn keine Option ausgewählt wurde
+    }
+}
+
+ 
+/* style.css */
+
+/* Transition für Container, Button, Input-Feld */
+.container, .button, .input-field {
+  transition: all 0.3s ease;
+}
+
+/* Einführungsanimation */
+@keyframes expand {
+  0% {
+      transform: scale(0.5);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+.tool-card {
+  animation: expand 0.5s ease-in-out;
+  animation-fill-mode: both;
+}
+
+/* Hover-Effekt */
+.tool-card:hover {
+  transform: translateY(-5px); /* Hebt die Karte leicht an */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Verstärkt den Schatten für einen Hebeeffekt */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Füge Transition hinzu */
+}
+
+/* Versteckt die Scrollbar in Webkit-basierten Browsern */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Versteckt die Scrollbar in Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* Grundlegende Stile */
+body {
+  background-color: #b8b8b8;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: #ffffff;
+  min-height: calc(100vh - 120px); /* 100% der Bildschirmhöhe minus die Höhe des Footers */
+  width: 80%;
+  max-width: 1200px;
+  border-radius: 6px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0px 0px 20px 10px #ffffff;
+  transition: box-shadow 0.3s ease;
+  transition: width 0.5s ease-in-out;
+  margin-bottom: 50px; /* Höhe des Footers + etwas zusätzlicher Platz */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#dynamicHeader {
+  width: 70%;
+  height: auto;
+  margin: auto; /* Zentriert das Bild im Container */
+}
+
+/* Stile für Eingabefelder, Textbereiche und Formularelemente */
+.input-field,
+.final-text,
+#mainText,
+textarea,
+input[type=text],
+select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-weight: 300;
+  font-size: 1em;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Stile für Buttons */
+button, .output-button {
+  background-color: #e9e9e9;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+  width: 18%; /* Make the buttons as wide as their container */
+  box-shadow: 7px 7px 14px #d3d3d3, -7px -7px 14px #ffffff;
+  transition: all 0.2s;
+  font-weight: 400;
+  font-size: calc(1em - 2px);
+  color: #000000;
+  cursor: pointer;
+}
+
+.button:hover,
+button:hover,
+.output-button:hover {
+  background-color: #d1d1d1;
+  box-shadow: 0px 0px 8px 0px #d3d3d3;
+}
+
+.button:active,
+button:active,
+.output-button:active {
+  background-color: #e0e0e0;
+  box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Stile für die Titelleiste */
+.title-bar {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(35, 35, 35, 0.811), transparent);
+  padding: 10px;
+  gap: 30px;
+}
+
+.title-bar-image {
+  height: 50px;
+  width: auto;
+}
+
+.title-button-row {
+  position: relative;
+  display: flex; /* Enable flexbox layout for buttons  */
+  justify-content: center; /* Evenly distribute buttons with space between them */
+  gap: 10px;
+  padding: 10px 20px;
+  width: 100%; /* This ensures the button row will have the same width as its parent */
+  flex-wrap: wrap; /* Standardmäßig kein Umbruch */
+}
+
+.title-bar-link {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.title-bar-link:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+/* Stile für Dropdown */
+.dropbtn {
+  background-color: inherit;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  min-width: 160px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  top: 100%; /* Setzt den Top-Wert auf 100% der Höhe des Elternelements, um es direkt unter dem Button zu positionieren */
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+/* Hide the hamburger menu on tablet and desktop views */
+.hamburger-menu {
+  display: none;
+}
+
+/* Hamburger Menu Icon Style */
+.menu-icon {
+  display: block;
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+}
+
+.menu-icon span {
+  display: block;
+  background: white;
+  height: 3px;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+/* Änderungen für das geöffnete Menü-Icon */
+.menu-icon.opened span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-icon.opened span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.opened span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Style for the mobile navigation menu */
+.mobile-nav {
+  position: fixed; /* Ändere von absolute zu fixed */
+  top: 60px; /* Höhe der Titelleiste anpassen */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 60px); /* Setzt die Höhe auf die gesamte Höhe des Viewports minus die Höhe der Titelleiste */
+  background: rgba(51, 51, 51, 0.9); /* Hintergrundfarbe des Menüs und Transparenz */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  flex-direction: column;
+  display: none;
+  z-index: 1000;
+  overflow-y: auto; /* Fügt Scrollen hinzu, falls der Inhalt den Viewport überschreitet */
+}
+
+.mobile-nav-link {
+  color: white;
+  padding: 15px 20px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.mobile-nav-link:hover {
+  background-color: #575757;
+}
+
+/* Stile für Tabellen */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Stile für den Footer */
+.footer {
+  position: absolute; /* Oder 'fixed', wenn der Footer immer sichtbar sein soll */
+  bottom: 0;
+  width: 100%;
+  background-color: #333; /* Dark background for subtlety */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.footer-text {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  max-width: 1200px;
+  font-size: 12px;
+}
+
+.gradient-footer {
+  font-size: 100%;
+  padding: 10px;
+}
+
+.gradient-footer {
+  background-image: linear-gradient(rgba(85, 85, 84, 0), #555554);
+  height: 40px;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.external-link {
+  color: white;
+}
+
+/* Überarbeitete Button- und Bild-Stile */
+.button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap; /* Verhindert Zeilenumbruch */
+  gap: 20px; /* Harmonischer Abstand */
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 10px; /* Harmonischer Abstand zwischen Logo und Beschriftung */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  background-color: #FFF;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  height: 50px; /* Einheitliche Höhe für alle Buttons */
+}
+
+.button img {
+  height: 30px; /* Einheitliche Höhe für Logos */
+}
+
+.button span {
+  display: block;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+#generateButton {
+  width: 150px; /* Feste Breite für den Button */
+}
+
+/* Stile für Differentialdiagnosen */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Anpassung nach Bedarf */
+}
+
+.input-field {
+  flex-grow: 1;
+}
+
+/* Stile für FAQ-Fragen */
+.faq-question {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 90%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 18px;
+  transition: 0.4s;
+}
+
+.faq-question:after {
+  content: '\002B'; /* Pluszeichen */
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.faq-question.active:after {
+  content: "\2212"; /* Minuszeichen */
+}
+
+.faq-answer {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+/* Stile für Unterfragen innerhalb der FAQ */
+.faq-sub-question .faq-question {
+  font-size: 0.9em; /* Etwas kleinere Schriftgröße für Unterfragen */
+  padding-left: 20px; /* Einrückung für Unterfragen zur Darstellung der Hierarchie */
+}
+
+/* Stile für den Prompt-Splitter */
+.chunk-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px; /* Abstand zwischen Textfeld und Button */
+  width: 100%; /* Match the width of the selection field */
+  margin-bottom: 30px; /* Größerer Abstand zwischen den Chunks */
+}
+
+/* Stile für Prompt-Templates */
+.button-grid {
+  display: flex;
+  flex-wrap: wrap; /* Ermöglicht das Umfließen von Elementen */
+  justify-content: space-around; /* Verteilt die Elemente gleichmäßig */
+  gap: 10px; /* Definiert den Abstand zwischen den Elementen */
+}
+
+.button-grid .button {
+  flex-grow: 1; /* Ermöglicht den Buttons, den verfügbaren Platz zu nutzen */
+  margin: 5px; /* Fügt einen kleinen Abstand hinzu */
+  min-width: 100px; /* Setzt eine minimale Breite, um Überfließen zu verhindern */
+}
+
+/* Stile für index.html HOME */
+.tool-cards-container {
+  display: flex; /* Ermöglicht flexibles Layout */
+  flex-wrap: wrap; /* Erlaubt Umbrüche, sodass Items in die nächste Zeile fließen */
+  justify-content: center; /* Zentriert die Items horizontal */
+  gap: 20px; /* Definiert den Abstand zwischen den Toolcards */
+  padding: 20px; /* Etwas Abstand innerhalb des Containers */
+}
+
+.tool-card {
+  flex: 1 1 150px; /* Ermöglicht Flexibilität, startet bei 150px Breite */
+  max-width: 220px;
+  max-height: 200px; /* Feste Maximalhöhe */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Nutzt den verfügbaren Platz zwischen den Elementen */
+  align-items: center; /* Zentriert Inhalte vertikal */
+  background-color: #fafafa; /* Hintergrundfarbe der Toolcards */
+  padding: 15px;
+  border-radius: 10px; /* Abgerundete Ecken */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Schatten für 3D-Effekt */
+  text-align: center; /* Zentriert den Text innerhalb der Toolcard */
+  text-decoration: none; /* Entfernt Unterstreichung von Links */
+  color: #000; /* Textfarbe */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Glatte Übergänge für Hover-Effekte */
+}
+
+.tool-card img {
+  width: 50px; /* Größe des Icons */
+  height: auto; /* Behält das Seitenverhältnis des Icons bei */
+  margin-bottom: 5px;
+}
+
+.tool-card h3, .tool-card p {
+  margin: 5px 0; /* Reduzierter Abstand oben und unten für Überschrift und Text */
+  font-size: 0.9em; /* Schriftgröße der Überschrift */
+  text-align: center; /* Zentriert den Text */
+}
+
+.tool-card p {
+  font-size: 0.8em; /* Schriftgröße des Beschreibungstextes */
+  max-width: 90%; /* Begrenzt die maximale Breite des Textes */
+  word-wrap: break-word; /* Stellt sicher, dass lange Wörter umgebrochen werden */
+}
+
+/* Responsive Design Anpassungen */
+@media (max-width: 1200px) {
+  .container {
+    width: 80%;
+    margin: 50px auto;
+    margin-bottom: 60px;
+    padding: auto;
+  }
+
+  #dynamicHeader {
+    width: 70%;
+    height: auto;
+    margin: auto; /* Zentriert das Bild im Container */
+  }
+
+  .output-button {
+    margin-top: 10px; /* Add space between the chunk field and the button */
+  }
+}
+
+@media (max-width: 1000px) {
+  .tool-card {
+    width: calc(45% - 40px); /* Passt die Breite an, um 2 Toolcards pro Reihe anzuzeigen */
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: 80%;
+    margin: 40px auto;
+    margin-bottom: 50px;
+    padding: auto;
+  }
+
+  .button span {
+    display: none; /* Versteckt die Beschriftung auf kleineren Bildschirmen */
+  }
+
+  .button {
+    padding: 5px;
+  }
+
+  .output-button {
+    font-size: calc(0.8em - 2px);
+  }
+
+  .output-button {
+    margin-top: 10px; /* Add space between the chunk field and the button */
+  }
+
+  footer {
+    font-size: 0.8em;
+  }
+
+  .tool-cards-container {
+    justify-content: space-around; /* Stellt sicher, dass bei weniger Platz die Karten gleichmäßig verteilt werden */
+    padding: 10px; /* Reduzierter Innenabstand für sehr kleine Bildschirme */
+  }
+
+  .tool-card {
+    width: calc(45% - 40px); /* Passt die Breite an, um 2 Toolcards pro Reihe anzuzeigen */
+  }
+}
+
+/* Media Query für Smartphones */
+@media (max-width: 640px) {
+  .container {
+    width: 95%;
+    margin: 30px auto;
+    margin-bottom: 50px;
+    padding: auto;
+  }
+
+  .dropdown {
+    display: block; /* Stellt sicher, dass das Dropdown-Menü korrekt angezeigt wird */
+  }
+
+  .title-bar {
+    justify-content: space-between;
+  }
+
+  .hamburger-menu {
+    display: block; /* Show the hamburger icon */
+  }
+
+  .menu-icon span,
+  .menu-icon.opened span:nth-child(1),
+  .menu-icon.opened span:nth-child(3) {
+    background-color: #fff; /* Farbanpassung für bessere Sichtbarkeit */
+  }
+
+  .title-bar-link {
+    display: none; /* Hide title bar links */
+  }
+
+  .mobile-nav.active {
+    display: flex; /* Show navigation menu when active */
+  }
+
+  .tool-cards-container {
+    justify-content: space-around; /* Stellt gleichmäßige Verteilung auf kleineren Bildschirmen sicher */
+  }
+
+  .tool-card {
+    flex-basis: calc(40% - 40px); /* Passt die Basisgröße an, um zwei Karten pro Reihe zu ermöglichen */
+    margin: 10px; /* Gleichmäßiger Abstand um jede Karte */
+    font-size: 3vw; /* Dynamische Textskalierung */
+    padding: 10px; /* Innenabstand zur Verhinderung von Überlauf */
+  }
+
+  .tool-card img {
+    max-width: 60%; /* Bilder skalieren passend zur Kartenbreite */
+    height: auto; /* Seitenverhältnis der Bilder bewahren */
+  }
+
+  .tool-card h3 {
+    font-size: 3vw; /* Dynamische Textskalierung */
+  }
+
+  .tool-card p {
+    display: none; /* Versteckt den Erklärungstext auf kleinen Bildschirmen */
+  }
+
+  .chunk-container {
+    flex-wrap: wrap; /* Ermöglicht Umbruch der Elemente */
+    justify-content: center; /* Zentriert die Buttons, wenn weniger Platz verfügbar ist */
+  }
+}
+
+/* Optionale Ergänzung für sehr kleine Bildschirme */
+@media (max-width: 400px) {
+  .tool-card {
+    flex-basis: 100%; /* Eine Karte pro Reihe auf sehr kleinen Bildschirmen */
+    font-size: 4vw; /* Etwas größere Textskalierung für bessere Lesbarkeit */
+  }
+}
+
+ 
+<!-- index.html ### -->
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KI-Tools Home</title>
+  <link rel="icon" type="image/png" href="Logos/Favicon.png" />
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+
+<body>
+  <div class="title-bar">
+    <div class="hamburger-menu">
+      <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav class="mobile-nav">
+      <a class="mobile-nav-link" href="index.html">Start</a>
+      <a class="mobile-nav-link" href="PromptGenerator.html">Prompt-Generator</a>
+      <a class="mobile-nav-link" href="PromptDifferentialDiagnosis.html">Differentialdiagnosen</a>
+      <a class="mobile-nav-link" href="PromptReport.html">Befundüberarbeitung</a>
+      <a class="mobile-nav-link" href="PromptQuestion.html">Frage mit radiologischem Kontext</a>
+      <a class="mobile-nav-link" href="FAQ.html">FAQ</a>
+    </nav>
+    <img alt="KI Tools" class="title-bar-image" src="Logos/KI-Tools.png" />
+    <div class="title-button-row" id="title-bar-row">
+      <a class="title-bar-link" href="index.html"> Start </a>
+      <a class="title-bar-link dropbtn" href="#"> Funktionen </a>
+      <div class="dropdown-content">
+        <a href="PromptGenerator.html">Prompt-Generator</a>
+        <a href="PromptDifferentialDiagnosis.html">Differentialdiagnosen</a>
+        <a href="PromptReport.html">Befundüberarbeitung</a>
+        <a href="PromptQuestion.html">Frage mit radiologischem Kontext</a>
+      </div>
+      <a class="title-bar-link" href="FAQ.html">FAQ</a>
+    </div>
+  </div>
+  <div class="container">
+    <img alt="KI-Tools" id="dynamicHeader" src="Logos/KI STG.png" />
+    <div class="tool-cards-container">
+      <a href="PromptGenerator.html" class="tool-card">
+        <img src="Logos/2_PromptGen.png" alt="Prompt-Generator Icon">
+        <h3>Informationen & Übersichten</h3>
+        <p>Fragen und Übersichtsdokumente aus definierten Quellen</p>
+      </a>
+      <a href="PromptDifferentialDiagnosis.html" class="tool-card">
+        <img src="Logos/2_PromptDiff.png" alt="Differentialdiagnosen Icon">
+        <h3>Differentialdiagnosen</h3>
+        <p>Mögliche Differentialdiagnosen anhand Läsionsbeschreibung</p>
+      </a>
+      <a href="PromptReport.html" class="tool-card">
+        <img src="Logos/2_PromptReport.png" alt="Prompt-Report Icon">
+        <h3>Befundüberarbeitung</h3>
+        <p>Sprachliche Überarbeitung und Präzisierung radiologischer Befunde</p>
+      </a>
+      <a href="PromptQuestion.html" class="tool-card">
+        <img src="Logos/2_PromptQuestion.png" alt="Prompt-Question Icon">
+        <h3>Frage mit radiologischem Kontext</h3>
+        <p>Optimierte Prompts für radiologische Fragen</p>
+      </a>
+      <a href="FAQ.html" class="tool-card faq-card">
+        <img src="Logos/2_FAQ.png" alt="FAQ Icon">
+        <h3>FAQ</h3>
+        <p>Häufige Fragen zur Nutzung und Funktion der RadAI Tools</p>
+      </a>
+    </div>
+  </div>
+  <footer class="gradient-footer">
+    <div class="footer-text">
+      <span>© - ML - 2024</span>
+      <span class="footer-link">Auch erreichbar aus dem Internet: <a href="https://radaitools.pages.dev" class="external-link">radaitools.pages.dev</a></span>
+    </div>
+  </footer>
+  <script src="script_General.js"></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "e94df41afe2e4345b21e9a47b25c129c"}'></script>
+</body>
+
+</html>
+
+ 
+<!-- PromptGenerator.html ### -->
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KI-Tools Prompt-Generator</title>
+  <link rel="icon" type="image/png" href="Logos/Favicon.png" />
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+
+<body>
+  <div class="title-bar">
+    <div class="hamburger-menu">
+      <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav class="mobile-nav">
+      <a class="mobile-nav-link" href="index.html">Start</a>
+      <a class="mobile-nav-link" href="PromptGenerator.html">Prompt-Generator</a>
+      <a class="mobile-nav-link" href="PromptDifferentialDiagnosis.html">Differentialdiagnosen</a>
+      <a class="mobile-nav-link" href="PromptReport.html">Befundüberarbeitung</a>
+      <a class="mobile-nav-link" href="PromptQuestion.html">Frage mit radiologischem Kontext</a>
+      <a class="mobile-nav-link" href="FAQ.html">FAQ</a>
+    </nav>
+    <img alt="KI Tools" class="title-bar-image" src="Logos/KI-Tools.png" />
+    <div class="title-button-row" id="title-bar-row">
+      <a class="title-bar-link" href="index.html"> Start </a>
+      <a class="title-bar-link dropbtn" href="#"> Funktionen </a>
+      <div class="dropdown-content">
+        <a href="PromptGenerator.html">Prompt-Generator</a>
+        <a href="PromptDifferentialDiagnosis.html">Differentialdiagnosen</a>
+        <a href="PromptReport.html">Befundüberarbeitung</a>
+        <a href="PromptQuestion.html">Frage mit radiologischem Kontext</a>
+      </div>
+      <a class="title-bar-link" href="FAQ.html">FAQ</a>
+    </div>
+  </div>
+  <div class="container">
+    <img alt="KI Prompts" id="dynamicHeader" src="Logos/KI Prompts.png" />
+    <div class="instructions" id="initialInstructions">
+      <ul>
+        <li>Gewünschtes Thema oder Frage in Feld eintragen</li>
+        <li>Dokumententyp im Drop-Down-Menü auswählen</li>
+        <li>Modalität im Drop-Down-Menü auswählen</li>
+        <li>Bestätigen mit KI-Anweisung erzeugen</li>
+      </ul>
+    </div>
+    <input class="input-field" id="topicInput" placeholder="Thema/Erkrankung/Tumor eingeben" type="text" />
+    <select class="input-field" id="documentType" placeholder="Dokument-Typ wählen">
+      <option disabled="" hidden="" selected="" value="">Dokument-Typ wählen</option>
+      <option value="Option 6">Übersicht</option>
+      <option value="Option 1">Protokoll- und Befundungshilfe</option>
+      <option value="Option 7">Staging-Hilfe</option>
+    </select>
+    <select class="input-field" id="modalityInput" placeholder="Modalität wählen">
+      <option selected="" value="">Modalität wählen</option>
+      <option value="MRT">MRT</option>
+      <option value="CT">CT</option>
+      <option value="MRT und CT">MRT und CT</option>
+      <option value="Bildgebende Verfahren ohne MRT und CT">Sonstiges</option>
+    </select>
+    <div class="button-row">
+      <button class="button button-match-instruction" id="generateButton" onclick="generateInstruction()">KI-Anweisung erzeugen</button>
+      <button class="button hidden" id="chatGPTButton" onclick="openChatGPT()">
+        <img src="Logos/ChatGPT.png" alt="ChatGPT Logo">
+        <span>ChatGPT</span>
+      </button>
+      <button class="button hidden" id="microsoftCopilotButton" onclick="openMicrosoftCopilot()">
+        <img src="Logos/Copilot.png" alt="Microsoft Copilot Logo">
+        <span>Microsoft Copilot</span>
+      </button>
+      <button class="button hidden" id="bardButton" onclick="openBard()">
+        <img src="Logos/Gemini.png" alt="Google Gemini Logo">
+        <span>Google Gemini</span>
+      </button>
+      <button class="button hidden" id="claudeButton" onclick="openClaude()">
+        <img src="Logos/Anthropic.png" alt="Anthropic Logo">
+        <span>Anthropic Claude</span>
+      </button>
+    </div>
+    <div class="instructions hidden" id="instructions">
+      <h3>Anleitung:</h3>
+      <ul>
+        <li>Wähle zwischen <strong>"ChatGPT", "Microsft Copilot", "Google Gemini" oder "Anthropic Claude"</strong></li>
+        <li><strong>Login</strong> mit <strong>Microsoft-Account oder Google Account</strong></li>
+        <li>Chatmodus <strong>"kreativ"</strong> auswählen</li>
+        <li>Generierte <strong>KI-Anweisung einfügen (bereits in die Zwischenablage kopiert)</strong> und <strong>bestätigen.</strong></li>
+      </ul>
+    </div>
+    <div class="final-text hidden" id="finalText"></div>
+  </div>
+  <footer class="gradient-footer">
+    <div class="footer-text">
+      <span>© - ML - 2024</span>
+      <span class="footer-link">Auch erreichbar aus dem Internet: <a href="https://radaitools.pages.dev" class="external-link">radaitools.pages.dev</a></span>
+    </div>
+  </footer>
+  <script src="script_PromptGenerator.js"></script>
+  <script src="script_General.js"></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "e94df41afe2e4345b21e9a47b25c129c"}'></script>
+</body>
+
+</html>
+ 

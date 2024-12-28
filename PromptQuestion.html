@@ -1,0 +1,98 @@
+<!-- PromptQuestion.html ### -->
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RadAI-Tools Frage mit radiologischem Kontext</title>
+  <link rel="icon" type="image/png" href="Logos/Favicon.png" />
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-bar">
+        <div class="hamburger-menu">
+          <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <nav class="mobile-nav">
+          <a class="mobile-nav-link" href="index.html">Start</a>
+          <a class="mobile-nav-link" href="PromptGenerator.html">Prompt-Generator</a>
+          <a class="mobile-nav-link" href="PromptDifferentialDiagnosis.html">Differentialdiagnosen</a>
+          <a class="mobile-nav-link" href="PromptReport.html">Befundüberarbeitung</a>
+          <a class="mobile-nav-link" href="PromptQuestion.html">Frage mit radiologischem Kontext</a>
+          <a class="mobile-nav-link" href="FAQ.html">FAQ</a>
+        </nav>
+        <img alt="KI Tools" class="title-bar-image" src="Logos/KI-Tools.png" />
+        <div class="title-button-row" id="title-bar-row">
+          <a class="title-bar-link" href="index.html"> Start </a>
+          <a class="title-bar-link dropbtn" href="#"> Funktionen </a>
+          <div class="dropdown-content">
+            <a href="PromptGenerator.html">Prompt-Generator</a>
+            <a href="PromptDifferentialDiagnosis.html">Differentialdiagnosen</a>
+            <a href="PromptReport.html">Befundüberarbeitung</a>
+            <a href="PromptQuestion.html">Frage mit radiologischem Kontext</a>
+          </div>
+          <a class="title-bar-link" href="FAQ.html">FAQ</a>
+        </div>
+      </div>
+  <div class="container">
+    <img alt="KI Frage mit radiologischem Kontext" id="dynamicHeader" src="Logos/KI Prompts Questions.png" />
+    <div class="instructions" id="initialInstructions">
+      <ul>
+        <li>Frage in das Eingabefeld eintragen</li>
+        <li>Modalität im Drop-Down-Menü auswählen</li>
+        <li>Bestätigen mit Prompt erstellen</li>
+      </ul>
+    </div>
+    <input class="input-field" id="questionInput" placeholder="Frage eingeben" type="text" />
+    <select class="input-field" id="modalityInput">
+      <option disabled="" hidden="" selected="" value="">Modalität wählen</option>
+      <option value="MRT">MRT</option>
+      <option value="CT">CT</option>
+      <option value="Röntgen">Röntgen</option>
+      <option value="Sonographie">Sonographie</option>
+      <option value="Angiographie">Angiographie</option>
+      <option value="Mammographie">Mammographie</option>
+      <option value="Sonstiges">Sonstiges</option>
+      <option value="Allgemein">Allgemein</option>
+      <option value="Organisation">Organisation</option>
+    </select>
+    <div class="button-row">
+      <button class="button button-match-instruction" id="generateButton" onclick="generatePrompt()">Prompt erstellen</button>
+      <button class="button hidden" id="chatGPTButton" onclick="openChatGPT()">
+        <img src="Logos/ChatGPT.png" alt="ChatGPT Logo">
+        <span>ChatGPT</span>
+      </button>
+      <button class="button hidden" id="microsoftCopilotButton" onclick="openMicrosoftCopilot()">
+        <img src="Logos/Copilot.png" alt="Microsoft Copilot Logo">
+        <span>Microsoft Copilot</span>
+      </button>
+      <button class="button hidden" id="bardButton" onclick="openBard()">
+        <img src="Logos/Gemini.png" alt="Google Gemini Logo">
+        <span>Google Gemini</span>
+      </button>
+      <button class="button hidden" id="claudeButton" onclick="openClaude()">
+        <img src="Logos/Anthropic.png" alt="Anthropic Logo">
+        <span>Anthropic Claude</span>
+      </button>
+    </div>
+    <div id="outputContainer" class="output-container hidden"></div>
+  </div>
+  <footer class="gradient-footer">
+    <div class="footer-text">
+      <span>© - ML - 2024</span>
+      <span class="footer-link">Auch erreichbar aus dem Internet: <a href="https://radaitools.pages.dev" class="external-link">radaitools.pages.dev</a></span>
+    </div>
+  </footer>
+  <script src="script_PromptQuestion.js"></script>
+  <script src="script_General.js"></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "e94df41afe2e4345b21e9a47b25c129c"}'></script>
+</body>
+
+</html>
