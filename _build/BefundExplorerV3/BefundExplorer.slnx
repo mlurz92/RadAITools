@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/BefundExplorer.Core/BefundExplorer.Core.csproj" />
+  <Project Path="tests/BefundExplorer.Tests/BefundExplorer.Tests.csproj" />
+</Solution>

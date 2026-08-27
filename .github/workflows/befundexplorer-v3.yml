@@ -1,0 +1,23 @@
+name: BefundExplorer V3
+on:
+  push:
+    branches: [ 'build/befundexplorer-v3' ]
+    paths:
+      - '_build/BefundExplorerV3/**'
+      - '.github/workflows/befundexplorer-v3.yml'
+  workflow_dispatch:
+jobs:
+  test-build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: _build/BefundExplorerV3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.400'
+      - name: Restore
+        run: dotnet restore BefundExplorer.slnx
+      - name: Test
+        run: dotnet test BefundExplorer.slnx -c Release --no-restore --logger "console;verbosity=normal"
