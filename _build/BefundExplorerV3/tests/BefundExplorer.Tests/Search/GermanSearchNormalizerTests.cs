@@ -1,3 +1,4 @@
+using Xunit;
 using BefundExplorer.Core.Search;
 namespace BefundExplorer.Tests.Search;
 public sealed class GermanSearchNormalizerTests
