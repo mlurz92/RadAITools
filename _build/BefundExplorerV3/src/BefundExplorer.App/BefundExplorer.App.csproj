@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net10.0-windows</TargetFramework><UseWPF>true</UseWPF><EnableWindowsTargeting>true</EnableWindowsTargeting><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><LangVersion>14.0</LangVersion><AssemblyName>BefundExplorer</AssemblyName><RootNamespace>BefundExplorer.App</RootNamespace></PropertyGroup>
+  <ItemGroup><ProjectReference Include="../BefundExplorer.Core/BefundExplorer.Core.csproj" /></ItemGroup>
+</Project>

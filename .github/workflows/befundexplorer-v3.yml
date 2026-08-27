@@ -2,9 +2,7 @@ name: BefundExplorer V3
 on:
   push:
     branches: [ 'build/befundexplorer-v3' ]
-    paths:
-      - '_build/BefundExplorerV3/**'
-      - '.github/workflows/befundexplorer-v3.yml'
+    paths: [ '_build/BefundExplorerV3/**', '.github/workflows/befundexplorer-v3.yml' ]
   workflow_dispatch:
 jobs:
   test-build:
@@ -21,3 +19,15 @@ jobs:
         run: dotnet restore BefundExplorer.slnx
       - name: Test
         run: dotnet test BefundExplorer.slnx -c Release --no-restore --logger "console;verbosity=normal"
+      - name: Publish Windows x64
+        run: dotnet publish src/BefundExplorer.App/BefundExplorer.App.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:PublishTrimmed=false -o publish
+      - name: Check executable
+        shell: pwsh
+        run: |
+          if (!(Test-Path publish/BefundExplorer.exe)) { throw 'BefundExplorer.exe fehlt' }
+          Get-Item publish/BefundExplorer.exe | Format-List Name,Length,LastWriteTime
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BefundExplorer-win-x64
+          path: _build/BefundExplorerV3/publish/BefundExplorer.exe
+          if-no-files-found: error
