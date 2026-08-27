@@ -1,4 +1,4 @@
-using System.Text;using System.Windows;using System.Windows.Controls;using System.Windows.Input;using System.Windows.Media;using BefundExplorer.Core.Data;using BefundExplorer.Core.Models;using BefundExplorer.Core.Search;using Microsoft.Win32;
+using System.IO;using System.Text;using System.Windows;using System.Windows.Controls;using System.Windows.Input;using System.Windows.Media;using BefundExplorer.Core.Data;using BefundExplorer.Core.Models;using BefundExplorer.Core.Search;using Microsoft.Win32;
 namespace BefundExplorer.App;
 public partial class MainWindow:Window
 {const string DbName="Radiologie_Befunddatenbank_CT_MR.sqlite";SqliteReportRepository? repo;ReportRecord? current;int page=1,totalPages=1;CancellationTokenSource? cts;bool dark;
